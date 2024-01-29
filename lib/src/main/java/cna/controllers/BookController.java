@@ -24,6 +24,12 @@ public class BookController {
 		bookService.create(book);	
 	}
 	
+	@PostMapping("/createBookWithAuthor/{authorId}")
+	void createBookWithAuthor(@RequestBody Book book, @PathVariable(name="authorId") String authorId) {
+		bookService.createBookWithAuthor(book, authorId);	
+	}
+	
+	
 	@GetMapping("/getBook/{id}")
 	Book getBook(@PathVariable long id) {
 		Optional<Book> book = bookService.find(id);
