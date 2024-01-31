@@ -8,8 +8,8 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import cna.data.AuthorRepository;
-import cna.data.BookRepository;
+import cna.data.author.AuthorRepository;
+import cna.data.book.BookRepository;
 import cna.data.model.Author;
 import cna.data.model.Book;
 
