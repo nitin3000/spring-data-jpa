@@ -24,8 +24,6 @@ import java.util.HashMap;
 	entityManagerFactoryRef = "authorEntityManager",
 	transactionManagerRef = "authorTransactionManager"
 )
-@EntityScan("cna.data.model")
-@ComponentScan(basePackages = { "cna.data.model.*" })
 public class PersistenceAuthorConfiguration {
 	
 	@Autowired
