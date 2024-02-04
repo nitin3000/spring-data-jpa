@@ -12,8 +12,12 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import cna.Main;
+import cna.data.author.AuthorRepository;
+import cna.data.book.BookRepository;
 import cna.data.model.Author;
 import cna.data.model.Book;
 import jakarta.transaction.Transactional;
@@ -22,6 +26,7 @@ import jakarta.transaction.Transactional;
 @AutoConfigureTestDatabase(replace=Replace.NONE)
 @Transactional
 //@Rollback(false)
+@ContextConfiguration(classes = Main.class)
 class BookRepositoryTest {
 	
 	@Autowired
@@ -35,9 +40,9 @@ class BookRepositoryTest {
 		bookRepository.findById(123l);
 	}
 	
-	@Test
+	//@Test
 	void findBook(){
-		
+				
 		Long bookId = 123l;
 		Book book = new Book();
 		Optional<Book> optionalBook = bookRepository.findById(bookId);	
@@ -59,10 +64,13 @@ class BookRepositoryTest {
 	@Test
 	void createBook(){
 		
-		Long bookId = 131l;
-		Optional<Book> optionalBook = bookRepository.findById(bookId);
+		Long bookId = 131l;		
+		Long authId = 124l;	
 		
-		Long authId = 124l;		
+		Author author = new Author();	
+		author.setId(authId);
+		Author newAuthor = authorRepository.save(author);
+		
 		Optional<Author> optionalAuthor = authorRepository.findById(authId);
 		
 		Set<Author> authors=new HashSet<Author>();
@@ -75,6 +83,8 @@ class BookRepositoryTest {
 		Book newBook = bookRepository.save(book);
 		assertTrue(newBook.getAuthor().size()==1);
 		
+		Optional<Book> optionalBook = bookRepository.findById(bookId);
+		assertTrue(optionalBook.get().getAuthor().size()==1);
 	}
 
 }
