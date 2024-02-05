@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "cna")
 public class BatchProcessingApplication {
 	
 	public static final Logger log = LoggerFactory.getLogger(BatchProcessingApplication.class);

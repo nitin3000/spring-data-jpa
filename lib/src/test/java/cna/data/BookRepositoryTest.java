@@ -25,7 +25,7 @@ import jakarta.transaction.Transactional;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace=Replace.NONE)
 @Transactional
-//@Rollback(false)
+@Rollback(false)
 @ContextConfiguration(classes = Main.class)
 class BookRepositoryTest {
 	

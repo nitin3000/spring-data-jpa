@@ -13,11 +13,13 @@ import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
+import org.springframework.transaction.annotation.Transactional;
 
 import cna.BatchProcessingApplication;
 
@@ -28,6 +30,8 @@ import cna.BatchProcessingApplication;
 @SpringBatchTest
 @SpringBootTest
 @ContextConfiguration(classes = BatchProcessingApplication.class)
+@Rollback(false)
+@Transactional
 public class BatchProgramTest {
 	
 	@Autowired
