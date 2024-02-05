@@ -26,8 +26,9 @@ public class BookItemProcessor implements ItemProcessor<Book, Book> {
 	public Book process (final Book book) {
 		Book newBook = new Book();
 		
-		book.setId(book.getId());
+		newBook.setId(book.getId());
 		//book.setAuthor(book.getAuthor());
+		
 		
 		return newBook;		
 	}
